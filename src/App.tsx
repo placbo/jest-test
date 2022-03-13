@@ -3,7 +3,7 @@ import PersonComponent from './PersonComponent';
 const App = () => {
   return (
     <div>
-      <h1>Jest-test</h1>
+      <h1>MyJestTest</h1>
       <PersonComponent />
     </div>
   );

@@ -28,12 +28,13 @@ const PersonComponent = () => {
 
   return (
     <div>
+      <h2>Random person from Star Wars:</h2>
       {isLoading ? (
         <p data-testid="loading">loading</p>
       ) : loadingError ? (
         <p data-testid="fetch_error">{loadingError}</p>
       ) : (
-        <pre data-testid="data_name"> {data.name}</pre>
+        <pre data-testid="data_name">{data.name}</pre>
       )}
     </div>
   );
