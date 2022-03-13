@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './task.css';
 
 const Task = ({ task }) => {
   const completion = task.completed ? 'complete' : 'incomplete';

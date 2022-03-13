@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { getTasks } from './api/tasks-service';
 import Task from './Task';
-import './tasklist.css';
 
 const TaskList = () => {
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
@@ -12,7 +11,7 @@ const TaskList = () => {
       try {
         const { data } = await getTasks();
         setTasks(data);
-        setError(null);
+        setError('');
       } catch (error) {
         setError('Failed to fetch tasks');
       }
@@ -25,8 +24,8 @@ const TaskList = () => {
     <div>
       <h2 className="tasklist">Task List</h2>
       {error && <h4 className="error">{error}</h4>}
-      {tasks.map((task) => (
-        <Task task={task} key={task.id} />
+      {tasks.map((task, index) => (
+        <Task task={task} key={index} />
       ))}
     </div>
   );

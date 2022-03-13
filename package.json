@@ -1,30 +1,13 @@
 {
-  "name": "msw-demo",
+  "name": "jest-test",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "axios": "^0.21.1",
-    "json-server": "^0.16.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
-  },
   "scripts": {
+    "build": "react-scripts build",
     "start": "react-scripts start",
     "start:msw": "REACT_APP_USE_MSW_MOCK_API=yes react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
-    "api": "json-server ./src/api/db.json"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "update": "npx msw init public --no-save"
   },
   "browserslist": {
     "production": [
@@ -38,8 +21,33 @@
       "last 1 safari version"
     ]
   },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "dependencies": {
+    "axios": "^0.26.1",
+    "json-server": "^0.17.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "web-vitals": "^2.1.4"
+  },
   "devDependencies": {
-    "msw": "^0.32.0"
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.4",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^17.0.21",
+    "@types/react": "^17.0.40",
+    "@types/react-dom": "^17.0.13",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "msw": "^0.39.1",
+    "prettier": "^2.5.1",
+    "react-scripts": "5.0.0",
+    "typescript": "^4.6.2"
   },
   "msw": {
     "workerDirectory": "public"
