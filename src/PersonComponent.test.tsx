@@ -7,8 +7,8 @@ import { mockError, mockPerson } from './api-mocks/mockdata';
 describe('Component: PersonComponent', () => {
   it('displays returned tasks on successful fetch', async () => {
     render(<PersonComponent />);
-    expect(screen.getByTestId('loading')).toBeInTheDocument();
-    const name = await screen.findByTestId('data_name');
+    expect(screen.findByTestId('person_loading')).toBeInTheDocument();
+    const name = await screen.findByTestId('person_name');
     expect(name).toBeInTheDocument();
     expect(name.textContent).toContain(mockPerson.name);
   });
@@ -16,7 +16,7 @@ describe('Component: PersonComponent', () => {
   it('displays error message when fetching raises error', async () => {
     mswServer.use(peopleHandlerException);
     render(<PersonComponent />);
-    const errorDisplay = await screen.findByTestId('fetch_error');
+    const errorDisplay = await screen.findByTestId('person_fetch_error');
     expect(errorDisplay).toBeInTheDocument();
     expect(errorDisplay.textContent).toContain(mockError.message);
   });

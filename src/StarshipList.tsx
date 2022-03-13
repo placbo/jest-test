@@ -1,40 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import { mockError } from './api-mocks/mockdata';
-import axios from 'axios';
-
-const randomId = Math.floor(Math.random() * 50);
-const url = `https://swapi.dev/api/people/${randomId}/`;
+import { getAllStarships } from './apis';
+import { StarshipType } from './types';
 
 const PersonComponent = () => {
-  const [data, setData] = useState({ name: '' });
+  const [data, setData] = useState<StarshipType[]>([]);
   const [loadingError, setLoadingError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const loadPerson = async () => {
+    const loadStarAllShips = async () => {
       setIsLoading(true);
       setLoadingError('');
       try {
-        const response = await axios.get(url);
-        setData(response.data);
+        const response = await getAllStarships();
+        setData(response.data.results);
       } catch (error) {
         setLoadingError(mockError.message);
       } finally {
         setIsLoading(false);
       }
     };
-    loadPerson().then();
+    loadStarAllShips().then();
   }, []);
 
   return (
     <div>
-      <h2>Random person from Star Wars:</h2>
+      <h2>Starships in Star Wars:</h2>
       {isLoading ? (
-        <p data-testid="person_loading">loading</p>
+        <p data-testid="loading">loading</p>
       ) : loadingError ? (
-        <p data-testid="person_fetch_error">{loadingError}</p>
+        <p data-testid="fetch_error">{loadingError}</p>
       ) : (
-        <pre data-testid="person_name">{data.name}</pre>
+        data.map((starship, index) => (
+          <pre data-testid={`starships_name_${index}`} key={index}>
+            {starship.name}
+          </pre>
+        ))
       )}
     </div>
   );
