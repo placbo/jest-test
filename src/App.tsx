@@ -1,10 +1,10 @@
-import TaskList from './TaskList';
+import PersonComponent from './PersonComponent';
 
 const App = () => {
   return (
     <div>
       <h1>Jest-test</h1>
-      <TaskList />
+      <PersonComponent />
     </div>
   );
 };
